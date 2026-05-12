@@ -1,10 +1,7 @@
-const url = $request.url;
-const headers = $request.headers;
-const cookie = headers["cookie"] || headers["Cookie"];
+const cookie = $request.headers["cookie"] || $request.headers["Cookie"];
 
-if (cookie) {
+if (cookie && cookie.includes("shopee_token")) {
   $persistentStore.write(cookie, "shopee_cookie");
-  console.log("Cookie 已儲存");
 }
 
 $done({});
